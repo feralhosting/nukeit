@@ -1,8 +1,10 @@
 #!/bin/bash
 # Nuke it, baby
 #
+# I recommend you fork this script and set your protected slots if you have multiple and wish to make sure there is a specific slot that can't get nuked.
+#
 # You can enter your protected servers here so that slots on this server are immune to the script. It is unlikely to have multiple slots per server for a user.
-protected=("metis" "asteria")
+protected=("server" "goliath")
 #
 if [[ "$(hostname)" = "$(echo ${protected[@]} | grep -o $(hostname))" ]]
 then
@@ -27,6 +29,7 @@ echo
     #
     cp -f /etc/skel/.{bash_aliases,bash_logout,bashrc,profile} ~/
     chmod 644 ~/.{bash_aliases,bash_logout,bashrc,profile}
+    wget -qO - http://git.io/v8m4u | cat - >> ~/.bash_aliases
     #
     mkdir -p ~/.ssh
     chmod 700 ~/.ssh
