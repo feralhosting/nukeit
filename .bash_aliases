@@ -17,7 +17,7 @@ alias sourcep='source ~/.profile'
 #
 # Shortcuts
 #
-alias lsa='ls -a"
+alias lsa='ls -a'
 alias sls='screen -ls'
 alias wipe='screen -wipe'
 alias k9='kill -9'
