@@ -24,6 +24,11 @@ echo
     #
     if [[ "$areyoursure" =~ ^[Yy]$ ]]; then
     shopt -s dotglob
+    #
+    tmpcron="$(mktemp)"
+    crontab "$tmpcron"
+    rm -f "$tmpcron"
+    #
     rm -rf ~/*
     find . -delete
     #
@@ -39,8 +44,8 @@ echo
     mkdir -p ~/bin
     mkdir -p ~/.apache2/conf.d
     mkdir -p ~/private/
-    mkdir -p ~/www/$(whoami).$(hostname -f)/public_html/
-    ln -s ~/www/$(whoami).$(hostname -f) ~/www/$(whoami).$(hostname)
+    mkdir -p ~/www/"$(whoami)"."$(hostname -f)"/public_html/
+    ln -s ~/www/"$(whoami)"."$(hostname -f)" ~/www/$(whoami).$(hostname)
     #
     read -ep "Change password? [y/n]: " -i "n" changepass
     if [[ "$changepass" =~ ^[Yy]$ ]]
